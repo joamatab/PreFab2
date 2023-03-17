@@ -136,5 +136,4 @@ def get_uncertainty(prediction: np.ndarray) -> np.ndarray:
     Returns:
         A numpy matrix representing the uncertainty of a nonbinary prediction.
     """
-    uncertainty = 1 - 2*np.abs(0.5 - prediction)
-    return uncertainty
+    return 1 - 2*np.abs(0.5 - prediction)
