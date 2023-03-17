@@ -59,10 +59,15 @@ def load_device_gds(path: str, cell_name: str,
 
     contours = []
     for k, _ in enumerate(polygons):
-        contour = []
-        for j, _ in enumerate(polygons[k]):
-            contour.append([[int(1000*polygons[k][j][0] - bounds[0][0]),
-                             int(1000*polygons[k][j][1] - bounds[0][1])]])
+        contour = [
+            [
+                [
+                    int(1000 * polygons[k][j][0] - bounds[0][0]),
+                    int(1000 * polygons[k][j][1] - bounds[0][1]),
+                ]
+            ]
+            for j, _ in enumerate(polygons[k])
+        ]
         contours.append(np.array(contour))
     cv2.drawContours(device, contours, -1, (1, 1, 1), -1)
 
